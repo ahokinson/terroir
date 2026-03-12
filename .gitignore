@@ -1,0 +1,21 @@
+# Build artifacts
+bin/
+terroir
+node_modules/
+*.bun-build
+
+# Caches
+.cache/
+
+# AI tooling
+.claude/
+
+# Environment / secrets
+.env
+.env.*
+
+# Database (should live in ~/.config/terroir/)
+*.db
+*.db-shm
+*.db-wal
+.terroir/

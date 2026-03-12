@@ -1,0 +1,48 @@
+version: "3"
+
+tasks:
+  dev:
+    desc: Run the TUI in dev mode
+    cmd: bun --preload ./build/preload.ts run src/index.tsx
+
+  build:
+    desc: Build the binary
+    cmd: bun run build.ts
+
+  lint:
+    desc: Run biome linter
+    cmd: bunx biome check src/
+
+  format:
+    desc: Format with biome
+    cmd: bunx biome check --write src/
+
+  check:
+    desc: TypeScript type check
+    cmd: bunx tsc --noEmit
+
+  db:generate:
+    desc: Generate drizzle migrations
+    cmd: bunx drizzle-kit generate
+
+  db:migrate:
+    desc: Run drizzle migrations
+    cmd: bunx drizzle-kit migrate
+
+  install:
+    desc: Build and symlink to /usr/local/bin
+    cmds:
+      - task: build
+      - sudo ln -sf "$(pwd)/bin/terroir" /usr/local/bin/terroir
+
+  clean:
+    desc: Remove build artifacts
+    cmd: rm -rf bin/ dist/
+
+  db:reset:
+    desc: Delete local database
+    cmd: rm -f ~/.config/terroir/terroir.db ~/.config/terroir/terroir.db-shm ~/.config/terroir/terroir.db-wal
+
+  reset:
+    desc: Delete local config and database
+    cmd: rm -rf ~/.config/terroir/

@@ -1,0 +1,28 @@
+{
+  "name": "terroir",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "lint": "biome check src/",
+    "format": "biome check --write src/",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "@catppuccin/palette": "^1.8.0",
+    "@opentui/core": "latest",
+    "@opentui/solid": "latest",
+    "drizzle-orm": "latest",
+    "solid-js": "^1.9.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "latest",
+    "@types/babel__core": "^7.20.5",
+    "@types/bun": "latest",
+    "drizzle-kit": "latest",
+    "typescript": "latest"
+  }
+}
